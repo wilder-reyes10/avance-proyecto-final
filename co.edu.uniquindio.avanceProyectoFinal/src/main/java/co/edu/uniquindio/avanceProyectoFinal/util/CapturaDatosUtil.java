@@ -1,4 +1,4 @@
-package co.edu.uniquindio.avanceProfectoFinal.util;
+package co.edu.uniquindio.avanceProyectoFinal.util;
 
 import javax.swing.*;
 import java.util.Scanner;
@@ -136,4 +136,4 @@ public class CapturaDatosUtil {
     }
 }
 
-}
+

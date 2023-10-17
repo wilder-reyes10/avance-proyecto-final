@@ -1,4 +1,4 @@
-package co.edu.uniquindio.avanceProfectoFinal.model;
+package co.edu.uniquindio.avanceProyectoFinal.model;
 
 public class Transaccion {
     private String cedulaTransaccion;
