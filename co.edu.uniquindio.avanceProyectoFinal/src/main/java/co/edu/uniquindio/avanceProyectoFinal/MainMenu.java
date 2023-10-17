@@ -6,6 +6,7 @@ import co.edu.uniquindio.avanceProyectoFinal.model.BancoNacional;
 
 import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.*;
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
+
 public class MainMenu {
 
     public static void main(String[] args) {
@@ -63,35 +64,35 @@ public class MainMenu {
                     buscarCliente(bancoNacional);
                     break;
                 case 6:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir de la aplicación");
+                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
                     if(valorRespuesta == 1){
                         opcion = 0;
                     }
                     break;
                 default:
-                    mostrarMensaje("La opción seleccionada no es una opción valida");
+                    mostrarMensaje("La opción seleccionada no es valida");
                     break;
             }
         }while (opcion != 6);
     }
 
     private static void mostrarMenuPrincipal() {
-        System.out.println("Opciones del menú principal: ");
-        System.out.println("1 - Gestionar clientes");
-        System.out.println("2 - Gestionar empleados");
-        System.out.println("3 - Realizar transaccion");
+        System.out.println("Elija una opcion del menú principal: ");
+        System.out.println("1 - Gestion clientes");
+        System.out.println("2 - Gestion empleados");
+        System.out.println("3 - Gestion de cuentas");
         System.out.println("4 - Solicitar prestamo");
         System.out.println("5 - Salir");
     }
 
     private static void mostrarMenuCrudCliente() {
-        System.out.println("Menú gestion clientes: ");
+        System.out.println("Elija que desea realizar en la gestion de clientes");
         System.out.println("1 - Mostrar información de los clientes");
-        System.out.println("2 - Crear Cliente");
-        System.out.println("3 - Actualiza cliente");
-        System.out.println("4 - Eliminar cliente");
-        System.out.println("5 - Buscar cliente");
-        System.out.println("6 - Volver al menú principal");
+        System.out.println("2 - Crear un Cliente");
+        System.out.println("3 - Actualizar un cliente");
+        System.out.println("4 - Eliminar un cliente");
+        System.out.println("5 - Buscar un cliente");
+        System.out.println("6 - regresar al menú principal");
     }
 
 
@@ -100,8 +101,8 @@ public class MainMenu {
         String apellido = leerStringConsola(INGRESE_APELIIDO_CLIENTE);
         String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
         int edad = leerEntero(INGRESE_EDAD_CLIENTE);
-        boolean flagCreado = bancoNacional.crearCliente(nombre, apellido, cedula, edad);
-        if(flagCreado == true){
+        boolean Creado = bancoNacional.crearCliente(nombre, apellido, cedula, edad);
+        if(Creado == true){
             System.out.println(CLIENTE_CREADO);
         }else{
             System.out.println(CLIENTE_NO_CREADO);
@@ -141,6 +142,7 @@ public class MainMenu {
         cliente.setApellido("Reyes");
         cliente.setCedula("1999");
         cliente.setEdad(24);
+
         bancoNacional.getListaClientes().add(cliente);
 
         return bancoNacional;

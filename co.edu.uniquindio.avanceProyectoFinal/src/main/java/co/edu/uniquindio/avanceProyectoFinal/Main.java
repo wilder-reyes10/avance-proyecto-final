@@ -37,16 +37,17 @@ public class Main {
                                      String apellido,
                                      String cedula,
                                      int edad,
-                                     BancoNacional prestamoUq) {
-        prestamoUq.crearCliente(nombre, apellido, cedula, edad);
+                                     BancoNacional bancoNacional) {
+        bancoNacional.crearCliente(nombre, apellido, cedula, edad);
     }
 
-    private static void elimimarCliente(BancoNacional prestamoUq, String cedula) {
-        prestamoUq.eliminarCliente(cedula);
+    private static void elimimarCliente(BancoNacional bancoNacional, String cedula) {
+        bancoNacional.eliminarCliente(cedula);
     }
 
-    private static void mostrarInformacionCliente(BancoNacional prestamoUq) {
-        List<Cliente> listaClientes = prestamoUq.obtenerClientes();
+    private static void mostrarInformacionCliente(BancoNacional bancoNacional) {
+        List<Cliente> listaClientes = bancoNacional.obtenerClientes();
+
         int tamanioLista = listaClientes.size();
         for (int i = 0; i < tamanioLista; i++) {
             Cliente cliente = listaClientes.get(i);
