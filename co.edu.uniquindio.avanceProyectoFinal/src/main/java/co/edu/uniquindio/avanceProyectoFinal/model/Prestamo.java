@@ -5,7 +5,6 @@ public class Prestamo {
     private String fechaInicio;
     private String fechaFin;
     private double valorPrestamo;
-
     BancoNacional ownedByBancoNacional;
 
     public Prestamo() {

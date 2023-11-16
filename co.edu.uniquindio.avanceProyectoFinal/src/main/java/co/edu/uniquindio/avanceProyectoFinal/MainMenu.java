@@ -1,7 +1,9 @@
 package co.edu.uniquindio.avanceProyectoFinal;
 
+import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoContrato;
 import co.edu.uniquindio.avanceProyectoFinal.model.Cliente;
 import co.edu.uniquindio.avanceProyectoFinal.model.BancoNacional;
+import co.edu.uniquindio.avanceProyectoFinal.model.Empleado;
 
 import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.*;
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
@@ -151,7 +153,7 @@ public class MainMenu {
         cliente1.setApellido("ramirez");
         cliente1.setCedula("1985");
         cliente1.setEdad(45);
-
+        
         bancoNacional.getListaClientes().add(cliente);
         bancoNacional.getListaClientes().add(cliente1);
 
