@@ -6,19 +6,18 @@ import java.util.List;
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
 
 public class BancoNacional {
-
     private String nombre;
 
     List<Cliente> listaClientes = new ArrayList<>();
+    List<Empleado> listaEmpleados = new ArrayList<>();
+    List<Prestamo> listaPrestamos = new ArrayList<>();
+    List<Cuenta> listaCuentas= new ArrayList<>();
 
+    //Constructor
     public BancoNacional() {
     }
 
-    public BancoNacional(String nombre, List<Cliente> listaClientes) {
-        this.nombre = nombre;
-        this.listaClientes = listaClientes;
-    }
-
+    // Getters and Setters
     public String getNombre() {
         return nombre;
     }
@@ -35,12 +34,30 @@ public class BancoNacional {
         this.listaClientes = listaClientes;
     }
 
-    @Override
-    public String toString() {
-        return "BancoNacional{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+    public List<Empleado> getListaEmpleados() {
+        return listaEmpleados;
     }
+
+    public void setListaEmpleados(List<Empleado> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
+    }
+
+    public List<Prestamo> getListaPrestamos() {
+        return listaPrestamos;
+    }
+
+    public void setListaPrestamos(List<Prestamo> listaPrestamos) {
+        this.listaPrestamos = listaPrestamos;
+    }
+
+    public List<Cuenta> getListaCuentas() {
+        return listaCuentas;
+    }
+
+    public void setListaCuentas(List<Cuenta> listaCuentas) {
+        this.listaCuentas = listaCuentas;
+    }
+
 
     /**
      * Metodo para obtener la lista de todos los clientes
@@ -50,6 +67,9 @@ public class BancoNacional {
         return getListaClientes();
     }
 
+    public List<Empleado> obtenerEmpleados() {
+        return getListaEmpleados();
+    }
     public Cliente obtenerCliente(String cedula){
         Cliente clienteEncontrado = null;
         for (Cliente cliente : getListaClientes()) {

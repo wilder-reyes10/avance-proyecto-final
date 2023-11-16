@@ -11,16 +11,16 @@ public class Main {
 
         //CRUD
 
-        //Create
+        //Create - Crear
         crearCliente("pedro", "marin", "1234", 20, bancoNacional);
         crearCliente("shaira", "osorio", "4567", 30, bancoNacional);
 
-        //Read
+        //Read - Mostrar
         mostrarInformacionCliente(bancoNacional);
 
-        //Update
+        //Update - Actualizar
 
-        //Delete
+        //Delete - Eliminar
         elimimarCliente(bancoNacional, "1234");
         System.out.println("-----> Informacion luego de eliminar");
         mostrarInformacionCliente(bancoNacional);
@@ -38,11 +38,8 @@ public class Main {
                                      String cedula,
                                      int edad,
                                      BancoNacional bancoNacional) {
-        bancoNacional.crearCliente(nombre, apellido, cedula, edad);
-    }
 
-    private static void elimimarCliente(BancoNacional bancoNacional, String cedula) {
-        bancoNacional.eliminarCliente(cedula);
+        bancoNacional.crearCliente(nombre, apellido, cedula, edad);
     }
 
     private static void mostrarInformacionCliente(BancoNacional bancoNacional) {
@@ -54,4 +51,9 @@ public class Main {
             System.out.println(cliente.toString());
         }
     }
+
+    private static void elimimarCliente(BancoNacional bancoNacional, String cedula) {
+        bancoNacional.eliminarCliente(cedula);
+    }
+
 }

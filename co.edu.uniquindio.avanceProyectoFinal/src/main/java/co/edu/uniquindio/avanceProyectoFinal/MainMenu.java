@@ -73,7 +73,7 @@ public class MainMenu {
                     mostrarMensaje("La opción seleccionada no es valida");
                     break;
             }
-        }while (opcion != 6);
+        } while (opcion != 6);
     }
 
     private static void mostrarMenuPrincipal() {
@@ -109,11 +109,6 @@ public class MainMenu {
         }
     }
 
-    private static void eliminarCliente(BancoNacional bancoNacional){
-        String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
-       bancoNacional.eliminarCliente(cedula);
-    }
-
     private static void actualizarCliente(BancoNacional bancoNacional) {
         String cedulaActual = leerStringConsola(INGRESE_CEDULA_CLIENTE_ACTUAL);
         String nombre = leerStringConsola(INGRESE_NOMBRE_CLIENTE);
@@ -128,16 +123,32 @@ public class MainMenu {
         }
     }
 
+    private static void eliminarCliente(BancoNacional bancoNacional){
+        String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
+       bancoNacional.eliminarCliente(cedula);
+    }
+
     private static void buscarCliente(BancoNacional bancoNacional) {
         String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
         bancoNacional.buscarCliente(cedula);
     }
 
+
+
+    /** Metodo para Inicializar datos de prueba
+     * @return bancoNacional
+     */
     private static BancoNacional inicializarDatosPrueba() {
         BancoNacional bancoNacional = new BancoNacional();
         bancoNacional.setNombre("Prestamos Banco Nacional");
 
         Cliente cliente = new Cliente();
+        cliente.setNombre("Wilder");
+        cliente.setApellido("Reyes");
+        cliente.setCedula("1999");
+        cliente.setEdad(24);
+
+        Cliente cliente1 = new Cliente();
         cliente.setNombre("Wilder");
         cliente.setApellido("Reyes");
         cliente.setCedula("1999");
