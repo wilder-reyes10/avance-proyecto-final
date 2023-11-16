@@ -97,6 +97,7 @@ public class BancoNacional {
             cliente.setApellido(apellido);
             cliente.setCedula(cedula);
             cliente.setEdad(edad);
+
             getListaClientes().add(cliente);
             return true;
         } else {

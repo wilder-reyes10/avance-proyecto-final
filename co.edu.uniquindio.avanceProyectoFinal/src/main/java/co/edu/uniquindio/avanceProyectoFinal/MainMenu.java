@@ -3,7 +3,6 @@ package co.edu.uniquindio.avanceProyectoFinal;
 import co.edu.uniquindio.avanceProyectoFinal.model.Cliente;
 import co.edu.uniquindio.avanceProyectoFinal.model.BancoNacional;
 
-
 import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.*;
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
 
@@ -101,6 +100,7 @@ public class MainMenu {
         String apellido = leerStringConsola(INGRESE_APELIIDO_CLIENTE);
         String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
         int edad = leerEntero(INGRESE_EDAD_CLIENTE);
+
         boolean Creado = bancoNacional.crearCliente(nombre, apellido, cedula, edad);
         if(Creado == true){
             System.out.println(CLIENTE_CREADO);
@@ -133,8 +133,6 @@ public class MainMenu {
         bancoNacional.buscarCliente(cedula);
     }
 
-
-
     /** Metodo para Inicializar datos de prueba
      * @return bancoNacional
      */
@@ -149,12 +147,13 @@ public class MainMenu {
         cliente.setEdad(24);
 
         Cliente cliente1 = new Cliente();
-        cliente.setNombre("Wilder");
-        cliente.setApellido("Reyes");
-        cliente.setCedula("1999");
-        cliente.setEdad(24);
+        cliente1.setNombre("juan");
+        cliente1.setApellido("ramirez");
+        cliente1.setCedula("1985");
+        cliente1.setEdad(45);
 
         bancoNacional.getListaClientes().add(cliente);
+        bancoNacional.getListaClientes().add(cliente1);
 
         return bancoNacional;
     }
