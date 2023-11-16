@@ -1,4 +1,4 @@
 package co.edu.uniquindio.avanceProyectoFinal.model;
 
-public class Persona {
+public abstract class Persona {
 }
