@@ -153,6 +153,12 @@ public class MainMenu {
         cliente1.setApellido("ramirez");
         cliente1.setCedula("1985");
         cliente1.setEdad(45);
+
+        Cliente cliente2 = new Cliente();
+        cliente2.setNombre("Pedro");
+        cliente2.setApellido("ramos");
+        cliente2.setCedula("1997");
+        cliente2.setEdad(45);
         
         bancoNacional.getListaClientes().add(cliente);
         bancoNacional.getListaClientes().add(cliente1);
