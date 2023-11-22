@@ -14,6 +14,14 @@ public class MainMenu {
         BancoNacional bancoNacional = inicializarDatosPrueba();
         gestionarOpcionesAplicacionBancoNacional(bancoNacional);
     }
+    private static void mostrarMenuPrincipal() {
+        System.out.println("Elija una opcion del menú principal: ");
+        System.out.println("1 - Gestion clientes");
+        System.out.println("2 - Gestion empleados");
+        System.out.println("3 - Gestion de cuentas");
+        System.out.println("4 - Solicitar prestamo");
+        System.out.println("5 - Salir");
+    }
 
     private static void gestionarOpcionesAplicacionBancoNacional(BancoNacional bancoNacional) {
         int opcion = 0;
@@ -25,6 +33,7 @@ public class MainMenu {
                     gestionarOpcionesCliente(bancoNacional);
                     break;
                 case 2:
+                    gestionarOpcionesEmpleado(bancoNacional);
                     break;
                 case 3:
                     break;
@@ -65,6 +74,46 @@ public class MainMenu {
                     buscarCliente(bancoNacional);
                     break;
                 case 6:
+                    mostrarMenuPrincipal();
+                    break;
+                case 7:
+                   int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
+                   if(valorRespuesta == 1){
+                     opcion = 0;
+                    }
+                    break;
+               default:
+                   mostrarMensaje("La opción seleccionada no es valida");
+                   break;
+            }
+        } while (opcion != 7);
+    }
+    private static void gestionarOpcionesEmpleado(BancoNacional bancoNacional) {
+        int opcion = 0;
+        do {
+            mostrarMenuCrudEmpleado();
+            opcion = leerEntero("Seleccione la opcion de gestion de clientes: ");
+            switch (opcion) {
+                case 1:
+                    bancoNacional.mostrarInformacionEmpleados();
+                    break;
+                case 2:
+                    crearEmpleado(bancoNacional);
+                    break;
+                case 3:
+                    actualizarEmpleado(bancoNacional);
+                    break;
+                case 4:
+                    eliminarEmpleado(bancoNacional);
+                    break;
+                case 5:
+                    buscarEmpleado(bancoNacional);
+                    break;
+                case 6:
+                    mostrarMenuPrincipal();
+                    break;
+
+                case 7:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
                     if(valorRespuesta == 1){
                         opcion = 0;
@@ -77,15 +126,7 @@ public class MainMenu {
         } while (opcion != 6);
     }
 
-    private static void mostrarMenuPrincipal() {
-        System.out.println("Elija una opcion del menú principal: ");
-        System.out.println("1 - Gestion clientes");
-        System.out.println("2 - Gestion empleados");
-        System.out.println("3 - Gestion de cuentas");
-        System.out.println("4 - Solicitar prestamo");
-        System.out.println("5 - Salir");
-    }
-
+    //Menu CRUD Gestión de clientes
     private static void mostrarMenuCrudCliente() {
         System.out.println("Elija que desea realizar en la gestion de clientes");
         System.out.println("1 - Mostrar información de los clientes");
@@ -95,7 +136,6 @@ public class MainMenu {
         System.out.println("5 - Buscar un cliente");
         System.out.println("6 - regresar al menú principal");
     }
-
 
     private static void crearCliente(BancoNacional bancoNacional) {
         String nombre = leerStringConsola(INGRESE_NOMBRE_CLIENTE);
@@ -110,7 +150,6 @@ public class MainMenu {
             System.out.println(CLIENTE_NO_CREADO);
         }
     }
-
     private static void actualizarCliente(BancoNacional bancoNacional) {
         String cedulaActual = leerStringConsola(INGRESE_CEDULA_CLIENTE_ACTUAL);
         String nombre = leerStringConsola(INGRESE_NOMBRE_CLIENTE);
@@ -124,7 +163,6 @@ public class MainMenu {
             System.out.println(CLIENTE_NO_ACTUALIZADO);
         }
     }
-
     private static void eliminarCliente(BancoNacional bancoNacional){
         String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
        bancoNacional.eliminarCliente(cedula);
@@ -134,6 +172,56 @@ public class MainMenu {
         String cedula = leerStringConsola(INGRESE_CEDULA_CLIENTE);
         bancoNacional.buscarCliente(cedula);
     }
+
+    // Menu CRUD Gestion de empleados
+    private static void mostrarMenuCrudEmpleado() {
+        System.out.println("Elija que desea realizar en la gestion de empleados");
+        System.out.println("1 - Mostrar información de los empleados");
+        System.out.println("2 - Crear un empleado");
+        System.out.println("3 - Actualizar un empleado");
+        System.out.println("4 - Eliminar un empleado");
+        System.out.println("5 - Buscar un empleado");
+        System.out.println("6 - regresar al menú principal");
+    }
+
+    private static void crearEmpleado(BancoNacional bancoNacional) {
+        String nombre = leerStringConsola(INGRESE_NOMBRE_EMPLEADO);
+        String apellido = leerStringConsola(INGRESE_APELIIDO_EMPLEADO);
+        String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
+        int edad = leerEntero(INGRESE_EDAD_EMPLEADO);
+
+        boolean Creado = bancoNacional.crearCliente(nombre, apellido, cedula, edad);
+        if(Creado == true){
+            System.out.println(EMPLEADO_CREADO);
+        }else{
+            System.out.println(EMPLEADO_CREADO);
+        }
+    }
+
+    private static void actualizarEmpleado(BancoNacional bancoNacional) {
+        String cedulaActual = leerStringConsola(INGRESE_CEDULA_EMPLEADO_ACTUAL);
+        String nombre = leerStringConsola(INGRESE_NOMBRE_EMPLEADO);
+        String apellido = leerStringConsola(INGRESE_APELIIDO_EMPLEADO);
+        String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
+        int edad = leerEntero(INGRESE_EDAD_EMPLEADO);
+        boolean Actualizado = bancoNacional.actualizarEmpleado(cedulaActual, nombre, apellido, cedula, edad);
+        if(Actualizado == true){
+            System.out.println(CLIENTE_ACTUALIZADO);
+        }else{
+            System.out.println(CLIENTE_NO_ACTUALIZADO);
+        }
+    }
+
+    private static void eliminarEmpleado(BancoNacional bancoNacional){
+        String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
+        bancoNacional.eliminarEmpleado(cedula);
+    }
+
+    private static void buscarEmpleado(BancoNacional bancoNacional) {
+        String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
+        bancoNacional.buscarEmpleado(cedula);
+    }
+
 
     /** Metodo para Inicializar datos de prueba
      * @return bancoNacional

@@ -7,7 +7,6 @@ public abstract class Persona {
     private String cedula;
     private int edad;
 
-
     //Constructor
     public Persona() {
     }

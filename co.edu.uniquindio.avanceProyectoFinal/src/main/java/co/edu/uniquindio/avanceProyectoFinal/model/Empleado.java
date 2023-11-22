@@ -18,6 +18,7 @@ public class Empleado extends Persona{
         this.tipoContrato = tipoContrato;
     }
 
+    //Getters and Setters
     public double getSalario() {
         return salario;
     }

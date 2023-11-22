@@ -12,8 +12,9 @@ public class Main {
         //CRUD
 
         //Create - Crear
-        crearCliente("pedro", "marin", "1234", 20, bancoNacional);
-        crearCliente("shaira", "osorio", "4567", 30, bancoNacional);
+       // crearCliente("pedro", "marin", "1234", 20, bancoNacional);
+
+        //crearCliente("shaira", "osorio", "4567", 30, bancoNacional);
 
         //Read - Mostrar
         mostrarInformacionCliente(bancoNacional);
@@ -33,10 +34,8 @@ public class Main {
         return bancoNacional;
     }
 
-    private static void crearCliente(String nombre,
-                                     String apellido,
-                                     String cedula,
-                                     int edad,
+    private static void crearCliente(String nombre, String apellido,
+                                     String cedula, int edad,
                                      BancoNacional bancoNacional) {
 
         bancoNacional.crearCliente(nombre, apellido, cedula, edad);
@@ -55,5 +54,4 @@ public class Main {
     private static void elimimarCliente(BancoNacional bancoNacional, String cedula) {
         bancoNacional.eliminarCliente(cedula);
     }
-
 }
