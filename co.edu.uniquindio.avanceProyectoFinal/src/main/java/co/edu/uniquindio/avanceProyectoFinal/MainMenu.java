@@ -20,7 +20,7 @@ public class MainMenu {
         System.out.println("1 - Gestion clientes");
         System.out.println("2 - Gestion empleados");
         System.out.println("3 - Gestion de cuentas");
-        System.out.println("4 - Solicitar prestamo");
+        System.out.println("4 - Realizar transaccion");
         System.out.println("5 - Salir");
     }
 
@@ -42,13 +42,8 @@ public class MainMenu {
                 case 4:
                     break;
                 case 5:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de salir?");
-                    if(valorRespuesta == 1){
-                        opcion = 0;
-                    }
-                    break;
-                default:
-                    mostrarMensaje("La opción seleccionada no es valida");
+                    System.out.println("Ha seleccionado salir");
+
                     break;
             }
         }while(opcion!=5);
@@ -78,14 +73,8 @@ public class MainMenu {
                 case 6:
                    gestionarOpcionesAplicacionBancoNacional(bancoNacional);
                     break;
-                case 7:
-                   int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
-                   if(valorRespuesta == 1){
-                     opcion = 0;
-                    }
-                    break;
                default:
-                   mostrarMensaje("La opción seleccionada no es valida");
+                   System.out.println("la opción seleccionada no es valida");
                    break;
             }
         } while (opcion != 7);
@@ -114,14 +103,8 @@ public class MainMenu {
                 case 6:
                     gestionarOpcionesAplicacionBancoNacional(bancoNacional);
                     break;
-                case 7:
-                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
-                    if(valorRespuesta == 1){
-                        opcion = 0;
-                    }
-                    break;
                 default:
-                    mostrarMensaje("La opción seleccionada no es valida");
+                    System.out.println("La opción seleccionada no es valida");
                     break;
             }
         } while (opcion != 6);
@@ -190,11 +173,9 @@ public class MainMenu {
         String apellido = leerStringConsola(INGRESE_APELIIDO_EMPLEADO);
         String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
         int edad = leerEntero(INGRESE_EDAD_EMPLEADO);
-        double salario = leerDouble(INGRESE_NOMBRE_EMPLEADO);
-        int numDiasTrabajado = leerEntero(INGRESE_NOMBRE_EMPLEADO);
 
-        boolean CreadoEmpleado = bancoNacional.crearEmpleado(nombre, apellido, cedula, edad, salario, numDiasTrabajado);
-        if(CreadoEmpleado == true){
+        boolean Creado = bancoNacional.crearEmpleado(nombre, apellido, cedula, edad);
+        if(Creado == true){
             System.out.println(EMPLEADO_CREADO);
         }else{
             System.out.println(EMPLEADO_CREADO);

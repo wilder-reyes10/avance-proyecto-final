@@ -1,7 +1,7 @@
 package co.edu.uniquindio.avanceProyectoFinal.model;
 
 public class Transaccion {
-    private String cedulaTransaccion;
+    private String codigoTransaccion;
     private String fecha;
     private double saldo;
 
@@ -10,19 +10,18 @@ public class Transaccion {
     public Transaccion() {
     }
 
-    public Transaccion(String cedulaTransaccion, String fecha, double saldo, BancoNacional ownedByBancoNacional) {
-        this.cedulaTransaccion = cedulaTransaccion;
+    public Transaccion(String codigoTransaccion, String fecha, double saldo) {
+        this.codigoTransaccion = codigoTransaccion;
         this.fecha = fecha;
         this.saldo = saldo;
-        this.ownedByBancoNacional = ownedByBancoNacional;
     }
 
-    public String getCedulaTransaccion() {
-        return cedulaTransaccion;
+    public String getCodigoTransaccion() {
+        return codigoTransaccion;
     }
 
-    public void setCedulaTransaccion(String cedulaTransaccion) {
-        this.cedulaTransaccion = cedulaTransaccion;
+    public void setCodigoTransaccion(String codigoTransaccion) {
+        this.codigoTransaccion = codigoTransaccion;
     }
 
     public String getFecha() {
@@ -49,12 +48,5 @@ public class Transaccion {
         this.ownedByBancoNacional = ownedByBancoNacional;
     }
 
-    @Override
-    public String toString() {
-        return "Transaccion{" +
-                "nombre='" + cedulaTransaccion + '\'' +
-                ", apellido='" + fecha + '\'' +
-                ", cedula='" + saldo +
-                '}';
-    }
+
 }

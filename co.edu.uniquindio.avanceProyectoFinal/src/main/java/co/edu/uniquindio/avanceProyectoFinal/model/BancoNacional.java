@@ -201,13 +201,10 @@ public class BancoNacional {
      * @param apellido
      * @param cedula
      * @param edad
-     * @param salario
-     * @param numDiasTrabajado
      * @return
      */
     public boolean crearEmpleado(String nombre, String apellido,
-                                 String cedula, int edad,
-                                 double salario, int numDiasTrabajado) {
+                                 String cedula, int edad) {
         Empleado empleadoActual = obtenerEmpleado(cedula);
         if (empleadoActual == null) {
             Empleado empleado = new Empleado();
@@ -215,8 +212,6 @@ public class BancoNacional {
             empleado.setApellido(apellido);
             empleado.setCedula(cedula);
             empleado.setEdad(edad);
-            empleado.setSalario(salario);
-            empleado.setNumDiasTrabajado(numDiasTrabajado);
 
             getListaEmpleados().add(empleado);
             return true;
@@ -276,6 +271,10 @@ public class BancoNacional {
         }
     }
 
+   //CUENTA
 
+   // public boolean crearCuenta(int numeroCuenta, int cedula){}
 
 }
+
+

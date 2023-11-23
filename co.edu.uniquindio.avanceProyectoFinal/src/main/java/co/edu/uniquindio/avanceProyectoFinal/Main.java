@@ -15,7 +15,7 @@ public class Main {
 
         //Create - Crear
         crearCliente("pedro", "marin", "1234", 20, bancoNacional);
-        crearCliente("shaira", "osorio", "4567", 30, bancoNacional);
+        crearCliente("shaira", "osorio", "4567", 30,bancoNacional);
 
         //Read - Mostrar
         mostrarInformacionCliente(bancoNacional);

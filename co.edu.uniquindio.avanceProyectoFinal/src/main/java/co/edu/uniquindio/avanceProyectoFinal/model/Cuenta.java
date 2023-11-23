@@ -1,25 +1,21 @@
 package co.edu.uniquindio.avanceProyectoFinal.model;
 
+import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoEstado;
+
 public class Cuenta {
     private String numeroCuenta;
     private int cedula;
     private String fechaApertura;
     private double saldo;
+    private TipoEstado tipoEstado;
 
     BancoNacional ownedByBancoNacional;
 
-    public Cuenta(String numeroCuenta, int cedula, String fechaApertura, double saldo,
-                  BancoNacional ownedByBancoNacional) {
-        this.numeroCuenta = numeroCuenta;
-        this.cedula = cedula;
-        this.fechaApertura = fechaApertura;
-        this.saldo = saldo;
-        this.ownedByBancoNacional = ownedByBancoNacional;
-    }
-
+    //Constructor
     public Cuenta() {
     }
 
+    ////Getters and Setters
     public String getNumeroCuenta() {
         return numeroCuenta;
     }
@@ -52,6 +48,14 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
+    public TipoEstado getTipoEstado() {
+        return tipoEstado;
+    }
+
+    public void setTipoEstado(TipoEstado tipoEstado) {
+        this.tipoEstado = tipoEstado;
+    }
+
     public BancoNacional getOwnedByBancoNacional() {
         return ownedByBancoNacional;
     }
@@ -60,13 +64,4 @@ public class Cuenta {
         this.ownedByBancoNacional = ownedByBancoNacional;
     }
 
-    @Override
-    public String toString() {
-        return "Cuenta{" +
-                "numeroCuenta='" + numeroCuenta + '\'' +
-                ", cedula='" + cedula + '\'' +
-                ", fechaApertura='" + fechaApertura + '\'' +
-                ", saldo=" +saldo +
-                '}';
-    }
 }
