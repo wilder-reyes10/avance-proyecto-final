@@ -5,6 +5,8 @@ import co.edu.uniquindio.avanceProyectoFinal.model.Cliente;
 import co.edu.uniquindio.avanceProyectoFinal.model.BancoNacional;
 import co.edu.uniquindio.avanceProyectoFinal.model.Empleado;
 
+import java.util.Date;
+
 import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.*;
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
 import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.leerStringConsola;
@@ -38,8 +40,10 @@ public class MainMenu {
                     gestionarOpcionesEmpleado(bancoNacional);
                     break;
                 case 3:
+                    gestionarOpcionesCuenta(bancoNacional);
                     break;
                 case 4:
+                    gestionarOpcionesTransaccion(bancoNacional);
                     break;
                 case 5:
                     System.out.println("Ha seleccionado salir");
@@ -89,7 +93,7 @@ public class MainMenu {
                     bancoNacional.mostrarInformacionEmpleados();
                     break;
                 case 2:
-                     crearEmpleado(bancoNacional);
+                    crearEmpleado(bancoNacional);
                     break;
                 case 3:
                     actualizarEmpleado(bancoNacional);
@@ -109,6 +113,60 @@ public class MainMenu {
             }
         } while (opcion != 6);
     }
+
+    private static void gestionarOpcionesCuenta(BancoNacional bancoNacional) {
+        int opcion = 0;
+        do {
+            mostrarMenuCrudCuenta();
+            opcion = leerEntero("Seleccione la opcion de gestion de clientes: ");
+            switch (opcion) {
+                case 1:
+                    bancoNacional.mostrarInformacionCuentas();
+                    break;
+                case 2:
+                    crearCuenta(bancoNacional);
+                    break;
+                case 3:
+                    eliminarCuenta(bancoNacional);
+                    break;
+                case 4:
+                    buscarCuenta(bancoNacional);
+                    break;
+                case 5:
+                    gestionarOpcionesAplicacionBancoNacional(bancoNacional);
+                    break;
+                default:
+                    System.out.println("la opción seleccionada no es valida");
+                    break;
+            }
+        } while (opcion != 6);
+    }
+
+    private static void gestionarOpcionesTransaccion(BancoNacional bancoNacional) {
+        int opcion = 0;
+        do {
+            mostrarMenuCrudTransaccion();
+            opcion = leerEntero("Seleccione la opcion de gestion de clientes: ");
+            switch (opcion) {
+                case 1:
+                    bancoNacional.mostrarInformacionTransacciones();
+                    break;
+                case 2:
+                    realizarDeposito(bancoNacional);
+                    break;
+                case 3:
+                    realizarTransferencia(bancoNacional);
+                    break;
+                case 4:
+                    gestionarOpcionesAplicacionBancoNacional(bancoNacional);
+                    break;
+                default:
+                    System.out.println("la opción seleccionada no es valida");
+                    break;
+            }
+        } while (opcion != 6);
+    }
+
 
     //Menu CRUD Gestión de clientes
     private static void mostrarMenuCrudCliente() {
@@ -190,9 +248,9 @@ public class MainMenu {
         int edad = leerEntero(INGRESE_EDAD_EMPLEADO);
         boolean Actualizado = bancoNacional.actualizarEmpleado(cedulaActual, nombre, apellido, cedula,edad);
         if(Actualizado == true){
-            System.out.println(CLIENTE_ACTUALIZADO);
+            System.out.println(EMPLEADO_ACTUALIZADO);
         }else{
-            System.out.println(CLIENTE_NO_ACTUALIZADO);
+            System.out.println(EMPLEADO_NO_ACTUALIZADO);
         }
     }
 
@@ -204,6 +262,59 @@ public class MainMenu {
     private static void buscarEmpleado(BancoNacional bancoNacional) {
         String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
         bancoNacional.buscarEmpleado(cedula);
+    }
+
+    //CUENTA
+    private static void mostrarMenuCrudCuenta() {
+        System.out.println("Elija que desea realizar en la gestion de Cuenta");
+        System.out.println("1 - Mostrar información de los Cuenta");
+        System.out.println("2 - Crear un Cuenta");
+        System.out.println("3 - Eliminar un Cuenta");
+        System.out.println("4 - Buscar un Cuenta");
+        System.out.println("5 - regresar al menú principal");
+    }
+
+    private static void crearCuenta(BancoNacional bancoNacional) {
+        String cedula = leerStringConsola(INGRESE_CEDULA_CUENTA);
+
+        boolean Creado = bancoNacional.crearCuenta(cedula);
+        if(Creado == true){
+            System.out.println(CUENTA_CREADO);
+        }else{
+            System.out.println(CUENTA_NO_CREADO);
+        }
+    }
+
+    private static void eliminarCuenta(BancoNacional bancoNacional){
+        String cedula = leerStringConsola(INGRESE_CEDULA_CUENTA);
+        bancoNacional.eliminarCuenta(cedula);
+    }
+
+    private static void buscarCuenta(BancoNacional bancoNacional) {
+        String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
+        bancoNacional.buscarCuenta(cedula);
+    }
+
+    //TRANSACCION
+    private static void mostrarMenuCrudTransaccion() {
+        System.out.println("Elija que desea realizar en la gestion de transaccion");
+        System.out.println("1 - Mostrar información de las transacciones");
+        System.out.println("2 - realizar un Deposito");
+        System.out.println("3 - realizar una transferencia");
+        System.out.println("4 - regresar al menú principal");
+    }
+
+    public static void realizarTransferencia(BancoNacional bancoNacional){
+        String cedulaEmisor = leerStringConsola("ingrese cedula emisor");
+        String cedulaReceptor = leerStringConsola("ingrese cedula receptor");
+        double monto = leerDoubleConsola("ingrese un momto");
+        bancoNacional.realizarTransferencia(cedulaEmisor,cedulaReceptor,monto);
+    }
+
+    public static void realizarDeposito(BancoNacional bancoNacional){
+        String cedulaReceptor = leerStringConsola("ingrese cedula receptor");
+        double monto = leerDoubleConsola("ingrese un momto");
+        bancoNacional.realizarDeposito(cedulaReceptor,monto);
     }
 
 
@@ -243,7 +354,6 @@ public class MainMenu {
         empleado1.setTipoContrato(TipoContrato.HORAS);
 
         bancoNacional.getListaEmpleados().add(empleado1);
-
         bancoNacional.getListaClientes().add(cliente);
         bancoNacional.getListaClientes().add(cliente1);
         bancoNacional.getListaEmpleados().add(empleado);

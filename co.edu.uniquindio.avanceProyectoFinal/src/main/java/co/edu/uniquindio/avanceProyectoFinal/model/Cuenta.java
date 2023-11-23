@@ -2,10 +2,12 @@ package co.edu.uniquindio.avanceProyectoFinal.model;
 
 import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoEstado;
 
+import java.util.Date;
+
 public class Cuenta {
-    private String numeroCuenta;
-    private int cedula;
-    private String fechaApertura;
+    private int numeroCuenta;
+    private String cedula;
+    private Date fechaApertura;
     private double saldo;
     private TipoEstado tipoEstado;
 
@@ -15,28 +17,36 @@ public class Cuenta {
     public Cuenta() {
     }
 
+    public Cuenta(int numeroCuenta, String cedula) {
+        this.numeroCuenta = numeroCuenta;
+        this.cedula = cedula;
+        this.saldo = 0;
+        this.tipoEstado = TipoEstado.ACTIVO;
+        this.fechaApertura = new Date();
+    }
+
     ////Getters and Setters
-    public String getNumeroCuenta() {
+    public int getNumeroCuenta() {
         return numeroCuenta;
     }
 
-    public void setNumeroCuenta(String numeroCuenta) {
+    public void setNumeroCuenta(int numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
-    public String getFechaApertura() {
+    public Date getFechaApertura() {
         return fechaApertura;
     }
 
-    public void setFechaApertura(String fechaApertura) {
+    public void setFechaApertura(Date fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
 
@@ -64,4 +74,14 @@ public class Cuenta {
         this.ownedByBancoNacional = ownedByBancoNacional;
     }
 
+    @Override
+    public String toString() {
+        return "Cuenta{" +
+                "numeroCuenta=" + numeroCuenta +
+                ", cedula='" + cedula + '\'' +
+                ", fechaApertura=" + fechaApertura +
+                ", saldo=" + saldo +
+                ", tipoEstado=" + tipoEstado +
+                '}';
+    }
 }

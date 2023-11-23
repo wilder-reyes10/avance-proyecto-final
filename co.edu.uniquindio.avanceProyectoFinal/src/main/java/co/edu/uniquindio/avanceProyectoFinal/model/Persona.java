@@ -6,6 +6,7 @@ public abstract class  Persona {
     private String apellido;
     private String cedula;
     private int edad;
+    private Cuenta cuenta;
 
     //Constructor
     public Persona() {
@@ -50,6 +51,13 @@ public abstract class  Persona {
         this.edad = edad;
     }
 
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
     @Override
     public String toString() {
         return "Persona{" +

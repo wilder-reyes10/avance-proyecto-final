@@ -36,6 +36,12 @@ public class BancoNacionalConstantes {
 
     public static final String EMPLEADO_NO_ACTUALIZADO = "No se pudo actualizar el empleado,no existe¡¡¡¡";
 
+    //CUENTA
 
-
+    public static final String INGRESE_CEDULA_CUENTA = "Ingrese la cedula";
+    public static final String CUENTA_CREADO = "La cuenta se ha creado con éxito";
+    public static final String CUENTA_NO_CREADO = "No se pudo crear la cuenta, ya existe¡¡¡¡";
+    public static final String CUENTA_NO_EXISTE = "La cuenta no existe";
+    public static final String CUENTA_ELIMINADO = "La cuenta se ha eliminado con éxito";
+    public static final String CUENTA_ENCONTRADO = "empleado encontrado: ";
 }
