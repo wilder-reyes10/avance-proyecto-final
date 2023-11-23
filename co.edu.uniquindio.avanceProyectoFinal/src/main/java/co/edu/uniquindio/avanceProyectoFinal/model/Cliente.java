@@ -25,6 +25,8 @@ public class Cliente extends Persona {
     public void setOwnedByBancoNacional(BancoNacional ownedByBancoNacional) {
         this.ownedByBancoNacional = ownedByBancoNacional;
     }
+
+
 }
 
 

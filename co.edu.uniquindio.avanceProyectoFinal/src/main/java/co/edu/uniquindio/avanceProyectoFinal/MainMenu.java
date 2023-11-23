@@ -7,6 +7,7 @@ import co.edu.uniquindio.avanceProyectoFinal.model.Empleado;
 
 import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.*;
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
+import static co.edu.uniquindio.avanceProyectoFinal.util.CapturaDatosUtil.leerStringConsola;
 
 public class MainMenu {
 
@@ -26,6 +27,7 @@ public class MainMenu {
     private static void gestionarOpcionesAplicacionBancoNacional(BancoNacional bancoNacional) {
         int opcion = 0;
         do {
+            System.out.println("Bienvenido al Banco Nacional");
             mostrarMenuPrincipal();
             opcion= leerEntero("Seleccione una de las opciones del menú: ");
             switch (opcion) {
@@ -74,7 +76,7 @@ public class MainMenu {
                     buscarCliente(bancoNacional);
                     break;
                 case 6:
-                    mostrarMenuPrincipal();
+                   gestionarOpcionesAplicacionBancoNacional(bancoNacional);
                     break;
                 case 7:
                    int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
@@ -92,13 +94,13 @@ public class MainMenu {
         int opcion = 0;
         do {
             mostrarMenuCrudEmpleado();
-            opcion = leerEntero("Seleccione la opcion de gestion de clientes: ");
+            opcion = leerEntero("Seleccione la opcion de gestion de empleados: ");
             switch (opcion) {
                 case 1:
                     bancoNacional.mostrarInformacionEmpleados();
                     break;
                 case 2:
-                    crearEmpleado(bancoNacional);
+                     crearEmpleado(bancoNacional);
                     break;
                 case 3:
                     actualizarEmpleado(bancoNacional);
@@ -110,9 +112,8 @@ public class MainMenu {
                     buscarEmpleado(bancoNacional);
                     break;
                 case 6:
-                    mostrarMenuPrincipal();
+                    gestionarOpcionesAplicacionBancoNacional(bancoNacional);
                     break;
-
                 case 7:
                     int valorRespuesta = mostrarMensajeAlerta("Esta seguro de desea salir");
                     if(valorRespuesta == 1){
@@ -189,9 +190,11 @@ public class MainMenu {
         String apellido = leerStringConsola(INGRESE_APELIIDO_EMPLEADO);
         String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
         int edad = leerEntero(INGRESE_EDAD_EMPLEADO);
+        double salario = leerDouble(INGRESE_NOMBRE_EMPLEADO);
+        int numDiasTrabajado = leerEntero(INGRESE_NOMBRE_EMPLEADO);
 
-        boolean Creado = bancoNacional.crearCliente(nombre, apellido, cedula, edad);
-        if(Creado == true){
+        boolean CreadoEmpleado = bancoNacional.crearEmpleado(nombre, apellido, cedula, edad, salario, numDiasTrabajado);
+        if(CreadoEmpleado == true){
             System.out.println(EMPLEADO_CREADO);
         }else{
             System.out.println(EMPLEADO_CREADO);
@@ -204,7 +207,7 @@ public class MainMenu {
         String apellido = leerStringConsola(INGRESE_APELIIDO_EMPLEADO);
         String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
         int edad = leerEntero(INGRESE_EDAD_EMPLEADO);
-        boolean Actualizado = bancoNacional.actualizarEmpleado(cedulaActual, nombre, apellido, cedula, edad);
+        boolean Actualizado = bancoNacional.actualizarEmpleado(cedulaActual, nombre, apellido, cedula,edad);
         if(Actualizado == true){
             System.out.println(CLIENTE_ACTUALIZADO);
         }else{
@@ -242,14 +245,28 @@ public class MainMenu {
         cliente1.setCedula("1985");
         cliente1.setEdad(45);
 
-        Cliente cliente2 = new Cliente();
-        cliente2.setNombre("Pedro");
-        cliente2.setApellido("ramos");
-        cliente2.setCedula("1997");
-        cliente2.setEdad(45);
-        
+        Empleado empleado = new Empleado();
+        empleado.setNombre("Ramiro");
+        empleado.setApellido("Gonzales");
+        empleado.setCedula("78945");
+        empleado.setEdad(45);
+        empleado.setSalario(1500000);
+        empleado.setTipoContrato(TipoContrato.MEDIO_TIEMPO);
+
+        Empleado empleado1 = new Empleado();
+        empleado1.setNombre("Jairo");
+        empleado1.setApellido("Gomez");
+        empleado1.setCedula("45612");
+        empleado1.setEdad(25);
+        empleado1.setSalario(2500000);
+        empleado1.setTipoContrato(TipoContrato.HORAS);
+
+        bancoNacional.getListaEmpleados().add(empleado1);
+
         bancoNacional.getListaClientes().add(cliente);
         bancoNacional.getListaClientes().add(cliente1);
+        bancoNacional.getListaEmpleados().add(empleado);
+
 
         return bancoNacional;
     }

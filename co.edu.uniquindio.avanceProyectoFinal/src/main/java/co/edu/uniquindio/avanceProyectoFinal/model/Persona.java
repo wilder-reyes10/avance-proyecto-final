@@ -1,6 +1,6 @@
 package co.edu.uniquindio.avanceProyectoFinal.model;
 
-public abstract class Persona {
+public abstract class  Persona {
 
     private String nombre;
     private String apellido;

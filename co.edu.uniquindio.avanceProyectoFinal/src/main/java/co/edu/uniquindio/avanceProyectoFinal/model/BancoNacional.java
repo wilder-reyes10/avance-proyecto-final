@@ -66,21 +66,10 @@ public class BancoNacional {
     public List<Cliente> obtenerClientes() {
         return getListaClientes();
     }
-
-    public List<Empleado> obtenerEmpleados() { return getListaEmpleados();}
+    public List<Empleado> obtenerEmpleados() { return getListaEmpleados(); }
 
 
     // CLIENTES
-    public Cliente obtenerCliente(String cedula){
-        Cliente clienteEncontrado = null;
-        for (Cliente cliente : getListaClientes()) {
-            if (cliente.getCedula().equalsIgnoreCase(cedula)){
-                clienteEncontrado = cliente;
-                break;
-            }
-        }
-        return clienteEncontrado;
-    }
 
     /**
      * Metodo para mostrar la informacion de todos los clientes existentes
@@ -93,6 +82,17 @@ public class BancoNacional {
             System.out.println(cliente.toString());
         }
     }
+    public Cliente obtenerCliente(String cedula){
+        Cliente clienteEncontrado = null;
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)){
+                clienteEncontrado = cliente;
+                break;
+            }
+        }
+        return clienteEncontrado;
+    }
+
     /**
      * Metodo para crear un cliente
      * @param nombre
@@ -102,7 +102,8 @@ public class BancoNacional {
      * @return boolean
      */
 
-    public boolean crearCliente(String nombre, String apellido, String cedula, int edad) {
+    public boolean crearCliente(String nombre, String apellido,
+                                String cedula, int edad) {
         Cliente clienteActual = obtenerCliente(cedula);
         if (clienteActual == null) {
             Cliente cliente = new Cliente();
@@ -170,16 +171,6 @@ public class BancoNacional {
     }
 
     //EMPLEADOS
-    public Empleado obtenerEmpleado(String cedula){
-        Empleado empleadoEncontrado = null;
-        for (Empleado empleado : getListaEmpleados()){
-            if (empleado.getCedula().equalsIgnoreCase(cedula)){
-                empleadoEncontrado = empleado;
-                break;
-            }
-        }
-        return empleadoEncontrado;
-    }
 
     /**
      * Metodo para mostrar la informacion de todos los empleados existentes
@@ -192,16 +183,31 @@ public class BancoNacional {
             System.out.println(empleado.toString());
         }
     }
+    public Empleado obtenerEmpleado(String cedula){
+        Empleado empleadoEncontrado = null;
+        for (Empleado empleado : getListaEmpleados()){
+            if (empleado.getCedula().equalsIgnoreCase(cedula)){
+                empleadoEncontrado = empleado;
+                break;
+            }
+        }
+        return empleadoEncontrado;
+    }
 
     /**
-     * Metodo para crear un cliente
+     * Metodo pára crear un empleaado
+     *
      * @param nombre
      * @param apellido
      * @param cedula
      * @param edad
-     * @return boolean
+     * @param salario
+     * @param numDiasTrabajado
+     * @return
      */
-    public boolean crearEmpleado(String nombre, String apellido, String cedula, int edad) {
+    public boolean crearEmpleado(String nombre, String apellido,
+                                 String cedula, int edad,
+                                 double salario, int numDiasTrabajado) {
         Empleado empleadoActual = obtenerEmpleado(cedula);
         if (empleadoActual == null) {
             Empleado empleado = new Empleado();
@@ -209,6 +215,8 @@ public class BancoNacional {
             empleado.setApellido(apellido);
             empleado.setCedula(cedula);
             empleado.setEdad(edad);
+            empleado.setSalario(salario);
+            empleado.setNumDiasTrabajado(numDiasTrabajado);
 
             getListaEmpleados().add(empleado);
             return true;
@@ -218,7 +226,7 @@ public class BancoNacional {
     }
 
     /**
-     * Metodo para buscar y mostrar la informacion de un cliente
+     * Metodo para buscar y mostrar la informacion de un empleado
      * @param cedula
      */
     public void buscarEmpleado(String cedula) {
@@ -232,7 +240,7 @@ public class BancoNacional {
     }
 
     /**
-     * Metodo para actualizar la información de un cliente
+     * Metodo para actualizar la información de un empleado
      * @param cedulaActual
      * @param nombre
      * @param apellido
@@ -255,7 +263,7 @@ public class BancoNacional {
     }
 
     /**
-     * Metodo para eliminar un cliente buscado por la cédula
+     * Metodo para eliminar un empleado buscado por la cédula
      * @param cedula
      */
     public void eliminarEmpleado(String cedula) {

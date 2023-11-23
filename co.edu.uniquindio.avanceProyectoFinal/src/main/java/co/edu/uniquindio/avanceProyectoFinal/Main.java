@@ -1,7 +1,9 @@
 package co.edu.uniquindio.avanceProyectoFinal;
 
+import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoContrato;
 import co.edu.uniquindio.avanceProyectoFinal.model.Cliente;
 import co.edu.uniquindio.avanceProyectoFinal.model.BancoNacional;
+import co.edu.uniquindio.avanceProyectoFinal.model.Empleado;
 
 import java.util.List;
 
@@ -9,22 +11,22 @@ public class Main {
     public static void main(String[] args) {
         BancoNacional bancoNacional = inializarDatosPrueba();
 
-        //CRUD
+        //CRUD Cliente
 
         //Create - Crear
-       // crearCliente("pedro", "marin", "1234", 20, bancoNacional);
-
-        //crearCliente("shaira", "osorio", "4567", 30, bancoNacional);
+        crearCliente("pedro", "marin", "1234", 20, bancoNacional);
+        crearCliente("shaira", "osorio", "4567", 30, bancoNacional);
 
         //Read - Mostrar
         mostrarInformacionCliente(bancoNacional);
 
-        //Update - Actualizar
 
         //Delete - Eliminar
         elimimarCliente(bancoNacional, "1234");
         System.out.println("-----> Informacion luego de eliminar");
         mostrarInformacionCliente(bancoNacional);
+
+
     }
 
     private static BancoNacional inializarDatosPrueba() {
@@ -34,13 +36,7 @@ public class Main {
         return bancoNacional;
     }
 
-    private static void crearCliente(String nombre, String apellido,
-                                     String cedula, int edad,
-                                     BancoNacional bancoNacional) {
-
-        bancoNacional.crearCliente(nombre, apellido, cedula, edad);
-    }
-
+    //CLIENTE
     private static void mostrarInformacionCliente(BancoNacional bancoNacional) {
         List<Cliente> listaClientes = bancoNacional.obtenerClientes();
 
@@ -51,7 +47,14 @@ public class Main {
         }
     }
 
+    private static void crearCliente(String nombre, String apellido,
+                                     String cedula, int edad,
+                                     BancoNacional bancoNacional) {
+        bancoNacional.crearCliente(nombre, apellido, cedula, edad);
+    }
+
     private static void elimimarCliente(BancoNacional bancoNacional, String cedula) {
         bancoNacional.eliminarCliente(cedula);
     }
+
 }
