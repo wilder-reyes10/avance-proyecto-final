@@ -1,8 +1,10 @@
 package co.edu.uniquindio.avanceProyectoFinal;
 
 import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoContrato;
+import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoEstado;
 import co.edu.uniquindio.avanceProyectoFinal.model.Cliente;
 import co.edu.uniquindio.avanceProyectoFinal.model.BancoNacional;
+import co.edu.uniquindio.avanceProyectoFinal.model.Cuenta;
 import co.edu.uniquindio.avanceProyectoFinal.model.Empleado;
 
 import java.util.Date;
@@ -118,7 +120,7 @@ public class MainMenu {
         int opcion = 0;
         do {
             mostrarMenuCrudCuenta();
-            opcion = leerEntero("Seleccione la opcion de gestion de clientes: ");
+            opcion = leerEntero("Seleccione la opcion de gestion de cuentas: ");
             switch (opcion) {
                 case 1:
                     bancoNacional.mostrarInformacionCuentas();
@@ -267,8 +269,8 @@ public class MainMenu {
     //CUENTA
     private static void mostrarMenuCrudCuenta() {
         System.out.println("Elija que desea realizar en la gestion de Cuenta");
-        System.out.println("1 - Mostrar información de los Cuenta");
-        System.out.println("2 - Crear un Cuenta");
+        System.out.println("1 - Mostrar información de las Cuentas");
+        System.out.println("2 - Crear una Cuenta");
         System.out.println("3 - Eliminar un Cuenta");
         System.out.println("4 - Buscar un Cuenta");
         System.out.println("5 - regresar al menú principal");
@@ -291,7 +293,7 @@ public class MainMenu {
     }
 
     private static void buscarCuenta(BancoNacional bancoNacional) {
-        String cedula = leerStringConsola(INGRESE_CEDULA_EMPLEADO);
+        String cedula = leerStringConsola("Ingrese la cedula de la persona");
         bancoNacional.buscarCuenta(cedula);
     }
 
@@ -317,6 +319,11 @@ public class MainMenu {
         bancoNacional.realizarDeposito(cedulaReceptor,monto);
     }
 
+    //METODOS ADICIONALES
+
+    public static void mostrarSaldoCuenta(BancoNacional bancoNacional){
+
+    }
 
     /** Metodo para Inicializar datos de prueba
      * @return bancoNacional
@@ -334,7 +341,7 @@ public class MainMenu {
         Cliente cliente1 = new Cliente();
         cliente1.setNombre("juan");
         cliente1.setApellido("ramirez");
-        cliente1.setCedula("1985");
+        cliente1.setCedula("2000");
         cliente1.setEdad(45);
 
         Empleado empleado = new Empleado();
@@ -353,9 +360,21 @@ public class MainMenu {
         empleado1.setSalario(2500000);
         empleado1.setTipoContrato(TipoContrato.HORAS);
 
-        bancoNacional.getListaEmpleados().add(empleado1);
+        Cuenta cuenta= new Cuenta();
+        cuenta.setCedula("123456");
+        cuenta.setNumeroCuenta(1234567891);
+        cuenta.setTipoEstado(TipoEstado.ACTIVO);
+
+        Cuenta cuenta1= new Cuenta();
+        cuenta1.setCedula("12345678");
+        cuenta1.setNumeroCuenta(1234567890);
+        cuenta1.setTipoEstado(TipoEstado.ACTIVO);
+
+        bancoNacional.getListaCuentas().add(cuenta1);
+        bancoNacional.getListaCuentas().add(cuenta);
         bancoNacional.getListaClientes().add(cliente);
         bancoNacional.getListaClientes().add(cliente1);
+        bancoNacional.getListaEmpleados().add(empleado1);
         bancoNacional.getListaEmpleados().add(empleado);
 
 

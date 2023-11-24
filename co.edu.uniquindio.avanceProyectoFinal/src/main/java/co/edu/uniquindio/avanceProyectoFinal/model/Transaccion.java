@@ -5,7 +5,6 @@ import java.util.Date;
 public class Transaccion {
     private Date fecha;
     private double valorTransferencia;
-
     private Persona remitente;
 
     private Persona receptor;

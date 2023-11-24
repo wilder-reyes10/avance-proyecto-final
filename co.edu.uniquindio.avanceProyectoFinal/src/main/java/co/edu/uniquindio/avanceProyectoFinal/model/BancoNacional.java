@@ -67,6 +67,7 @@ public class BancoNacional {
     public List<Transaccion> getListaTransacciones() {
         return listaTransacciones;
     }
+
     public void setListaTransacciones(List<Transaccion> listaTransacciones) {
         this.listaTransacciones = listaTransacciones;
     }
@@ -299,7 +300,7 @@ public class BancoNacional {
     //CUENTA
 
     /**
-     * Metodo para mostrar la informacion de todos los empleados existentes
+     * Metodo para mostrar la informacion de todas las cuentas existentes
      */
     public void mostrarInformacionCuentas() {
         //Opcion 1
@@ -325,6 +326,7 @@ public class BancoNacional {
         Persona persona = obtenerCliente(cedula);
         if (persona != null) {
             int numeroCuenta = (int) (Math.random() * 10000000 + 1000000);
+            System.out.println("Su numero de cuenta es");
             System.out.println(numeroCuenta);
             Cuenta cuenta = new Cuenta(numeroCuenta, cedula);
             persona.setCuenta(cuenta);
@@ -376,44 +378,44 @@ public class BancoNacional {
         }
     }
 
-    public boolean realizarTransferencia(String cedulaRemitente, String cedulaReceptor, double monto){
+    //TRANSACCIONES
+    public boolean realizarTransferencia(String cedulaRemitente, String cedulaReceptor, double monto) {
         Persona remitente = obtenerCliente(cedulaRemitente);
         Persona receptor = obtenerCliente(cedulaReceptor);
-        if(remitente != null){
-            if(remitente.getCuenta().getSaldo() >= monto){
-                if(receptor != null){
+        if (remitente != null) {
+            if (remitente.getCuenta().getSaldo() >= monto) {
+                if (receptor != null) {
                     receptor.getCuenta().setSaldo(receptor.getCuenta().getSaldo() + monto);
                     remitente.getCuenta().setSaldo(remitente.getCuenta().getSaldo() - monto);
                     Transaccion transaccion = new Transaccion(remitente, receptor, monto);
                     listaTransacciones.add(transaccion);
                     return true;
-                }else{
+                } else {
                     System.out.println("Cuenta no existe");
                 }
-            }else{
+            } else {
                 System.out.println("La cuenta no tiene fondos suficientes");
             }
-        }else{
+        } else {
             System.out.println("Cuenta no existe");
         }
         return false;
     }
 
-    public boolean realizarDeposito(String cedula, double monto){
+    public boolean realizarDeposito(String cedula, double monto) {
         Persona receptor = obtenerCliente(cedula);
         if (receptor != null) {
             receptor.getCuenta().setSaldo(receptor.getCuenta().getSaldo() + monto);
             Transaccion transaccion = new Transaccion(null, receptor, monto);
             listaTransacciones.add(transaccion);
             return true;
-        }else{
+        } else {
             System.out.println("Cuenta no existe");
         }
         return false;
     }
 
     public void mostrarInformacionTransacciones() {
-
         for (Transaccion transaccion : getListaTransacciones()) {
             System.out.println(transaccion.toString());
         }
