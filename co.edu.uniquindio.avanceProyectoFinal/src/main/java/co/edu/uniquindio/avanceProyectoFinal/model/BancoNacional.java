@@ -1,6 +1,7 @@
 package co.edu.uniquindio.avanceProyectoFinal.model;
 
 import co.edu.uniquindio.avanceProyectoFinal.Enumeracion.TipoEstado;
+import co.edu.uniquindio.avanceProyectoFinal.Servicios.IBancoNacional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.List;
 
 import static co.edu.uniquindio.avanceProyectoFinal.Constantes.BancoNacionalConstantes.*;
 
-public class BancoNacional {
+public class BancoNacional implements IBancoNacional {
     private String nombre;
 
     List<Cliente> listaClientes = new ArrayList<>();
