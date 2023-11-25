@@ -321,9 +321,6 @@ public class MainMenu {
 
     //METODOS ADICIONALES
 
-    public static void mostrarSaldoCuenta(BancoNacional bancoNacional){
-
-    }
 
     /** Metodo para Inicializar datos de prueba
      * @return bancoNacional

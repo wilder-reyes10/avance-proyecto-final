@@ -72,20 +72,6 @@ public class BancoNacional {
         this.listaTransacciones = listaTransacciones;
     }
 
-    /**
-     * Metodo para obtener la lista de todos los clientes
-     *
-     * @return List<Cliente>
-     */
-    public List<Cliente> obtenerClientes() {
-        return getListaClientes();
-    }
-
-    public List<Empleado> obtenerEmpleados() {
-        return getListaEmpleados();
-    }
-
-
     // CLIENTES
 
     /**
@@ -98,17 +84,6 @@ public class BancoNacional {
         for (Cliente cliente : getListaClientes()) {
             System.out.println(cliente.toString());
         }
-    }
-
-    public Cliente obtenerCliente(String cedula) {
-        Cliente clienteEncontrado = null;
-        for (Cliente cliente : getListaClientes()) {
-            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
-                clienteEncontrado = cliente;
-                break;
-            }
-        }
-        return clienteEncontrado;
     }
 
     /**
@@ -206,17 +181,6 @@ public class BancoNacional {
         }
     }
 
-    public Empleado obtenerEmpleado(String cedula) {
-        Empleado empleadoEncontrado = null;
-        for (Empleado empleado : getListaEmpleados()) {
-            if (empleado.getCedula().equalsIgnoreCase(cedula)) {
-                empleadoEncontrado = empleado;
-                break;
-            }
-        }
-        return empleadoEncontrado;
-    }
-
     /**
      * Metodo pára crear un empleaado
      *
@@ -311,17 +275,6 @@ public class BancoNacional {
         }
     }
 
-    public Cuenta obtenerCuenta(String cedula) {
-        Cuenta cuentaEncontrado = null;
-        for (Cuenta cuenta : getListaCuentas()) {
-            if (cuenta.getCedula().equalsIgnoreCase(cedula)) {
-                cuentaEncontrado = cuenta;
-                break;
-            }
-        }
-        return cuentaEncontrado;
-    }
-
     public boolean crearCuenta(String cedula) {
         Persona persona = obtenerCliente(cedula);
         if (persona != null) {
@@ -332,15 +285,6 @@ public class BancoNacional {
             persona.setCuenta(cuenta);
             listaCuentas.add(cuenta);
             return true;
-        }
-        return false;
-    }
-
-    public boolean verificarNumCuenta(int numeroCuenta) {
-        for (Cuenta cuenta : listaCuentas) {
-            if (cuenta.getNumeroCuenta() == numeroCuenta) {
-                return true;
-            }
         }
         return false;
     }
@@ -363,7 +307,7 @@ public class BancoNacional {
     /**
      * Metodo para eliminar una cuenta buscado por la cédula
      *
-     * @param
+     * @param cedula
      */
     public void eliminarCuenta(String cedula) {
         Cuenta cuentaEncontrado = obtenerCuenta(cedula);
@@ -420,6 +364,86 @@ public class BancoNacional {
             System.out.println(transaccion.toString());
         }
     }
+
+    //METODOS ADICIONALES
+
+    /**
+     * Metodo para obtener la lista de clientes
+     * @return getListaClientes()
+     */
+    public List<Cliente> obtenerClientes() {
+        return getListaClientes();
+    }
+
+    /**
+     * Metodo para obtener un cliente
+     * @param cedula
+     * @return clienteEncontrado;
+     */
+    public Cliente obtenerCliente(String cedula) {
+        Cliente clienteEncontrado = null;
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+                clienteEncontrado = cliente;
+                break;
+            }
+        }
+        return clienteEncontrado;
+    }
+    /**
+     * Metodo para obtener la lista de empleados
+     * @return getListaEmpleados()
+     */
+    public List<Empleado> obtenerEmpleados() {
+        return getListaEmpleados();
+    }
+
+    /**
+     * Metodo para obtener un empleado
+     * @param cedula
+     * @return empleadoEncontrado
+     */
+    public Empleado obtenerEmpleado(String cedula) {
+        Empleado empleadoEncontrado = null;
+        for (Empleado empleado : getListaEmpleados()) {
+            if (empleado.getCedula().equalsIgnoreCase(cedula)) {
+                empleadoEncontrado = empleado;
+                break;
+            }
+        }
+        return empleadoEncontrado;
+    }
+
+    /**
+     * Metodo para obtener una cuenta
+     * @param cedula
+     * @return cuentaEncontrado
+     */
+    public Cuenta obtenerCuenta(String cedula) {
+        Cuenta cuentaEncontrado = null;
+        for (Cuenta cuenta : getListaCuentas()) {
+            if (cuenta.getCedula().equalsIgnoreCase(cedula)) {
+                cuentaEncontrado = cuenta;
+                break;
+            }
+        }
+        return cuentaEncontrado;
+    }
+
+    /**
+     * Metodo para verificar un numero de cuenta
+     * @param numeroCuenta
+     * @return
+     */
+    public boolean verificarNumCuenta(int numeroCuenta) {
+        for (Cuenta cuenta : listaCuentas) {
+            if (cuenta.getNumeroCuenta() == numeroCuenta) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
 

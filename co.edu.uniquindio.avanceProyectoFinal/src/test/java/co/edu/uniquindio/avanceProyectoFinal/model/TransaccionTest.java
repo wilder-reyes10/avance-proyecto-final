@@ -12,7 +12,7 @@ class TransaccionTest {
     @BeforeEach
     void init(){
         transaccionDto = new TransaccionDto("24/11/23", 220,
-                "pedro", "kelly");
+                "pedro","kelly");
     }
     @Test
     void testVerificarTransferencia() {
@@ -26,10 +26,9 @@ class TransaccionTest {
         TransaccionDto transaccionDto1 = new TransaccionDto("12/12/32", 254,
                 "pedro", "hugo");
         String esperado= "pedro";
-        String real= transaccionDto.nombreReceptor();
+        String real= transaccionDto1.nombreReceptor();
      //   assertEquals(esperado, real);
-        assertTrue(real.equals("kelly"));
-
+        assertTrue(real.equals("hugo"));
 
     }
 
